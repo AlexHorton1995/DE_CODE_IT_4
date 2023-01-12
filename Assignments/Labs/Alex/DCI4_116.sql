@@ -9,7 +9,7 @@ SELECT SUM(TOTAL) TotalOrder from (
 		inner join sales.OrderLines OL (NOLOCK) ON OL.OrderID = O.OrderID
 	) SUBQ
 ) SubOfSubQ
-where OrdID = 56970
+where OrdID = 56970 AND CustID = 514
 
 SELECT OrdID, CustID, OrderDate, Total 
 FROM(
