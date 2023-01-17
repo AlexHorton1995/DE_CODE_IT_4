@@ -1,0 +1,15 @@
+Lyndon Orange DC_14_53
+
+Basic SQL Questions:
+
+1. What does SQL stand for?
+2. What is SQL used for?
+3. What does the acronym RDBMS stand for?
+4. Name 3 different RDBMS systems.
+5. What does the acronym C.R.U.D stand for?
+
+Answer 1. SQL stands for Structured Query Language
+Answer 2. SQL is used to query a database
+Answer 3. RDBMS stands for Relational Database Management System
+Answer 4. 3 different RDBMS systems are MYSQL, NOSQL, SQL
+Answer 5. C.R.U.D. stands for Create. Read. Update. Delete
