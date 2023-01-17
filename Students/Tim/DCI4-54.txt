@@ -1,0 +1,7 @@
+Basic SQL Questions:
+
+1. What does SQL stand for? Structured Query Language
+2. What is SQL used for?SQL is used to communicatewith a database
+3. What does the acronym RDBMS stand for? Relational database managment systems
+4. Name 3 different RDBMS systems. My SQL, Oracle database,microsoft sql server
+5. What does the acronym C.R.U.D stand for? Create, Read, Update, Delete
