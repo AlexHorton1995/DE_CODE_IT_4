@@ -1,0 +1,24 @@
+Basic Git Questions:
+1. What is a version control system (VCS)? 
+version control is a class systems that control changes to computer programs.
+
+2. What is a git repository?
+ Git is a control system that is used by programmeres while developing code.
+
+3. What does git clone do? 
+A git clone is coping an existing repo in a new directory in a new location.
+
+4. What does the command git config do? 
+It is a function used to set values on a global or local project level.
+
+5. What is a conflict? 
+when tech growes beyonf its intended use.
+
+6. What does git status command do? 
+Displays the state of a working directory and staging area.
+
+7. Define “Index”.
+Used to specify the elements of an array.
+
+8. What does git add command do? 
+This adds a change int the working directory to the staging area.
