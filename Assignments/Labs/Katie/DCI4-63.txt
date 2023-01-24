@@ -1,0 +1,13 @@
+
+Basic Git Questions:
+1. What is a version control system (VCS)? Software tools that helps teams manage changes to source code 
+2. What is a git repository? Tracks and saves the history of all changes made to a file in a Git project. The data is saved in a directory called git.
+3. What does git clone do? Clones a repository into a new directory onto a local machine.
+4. What does the command git config do? A command function that sets configuration variables. This will modify a configuration text file
+5. What is a conflict? This happens when two separate branches have made edits to the same line in a file, or when a file has been deleted in one branch but edited in the other
+6. What does git status command do? This will display the state of the working directory and the staging area. This will also tell you which files are the source of conflict during a merge conflict.
+7. Define “Index”. It is the staging area between your working directory and your repository until you are ready to commit
+8. What does git add command do? It adds changes in the current working directory to the staging area. You can also use this to preview your commit.
+9. Complete Lessons 1 through 4 in section marked "Introduction Sequence" at the following link:
+https://learngitbranching.js.org/?locale=en_US
+
