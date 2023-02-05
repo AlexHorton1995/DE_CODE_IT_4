@@ -1,0 +1,14 @@
+Relational Database Management Systems:
+1.	How is data stored in a relational database model? Data is stored in the form of Tables that are made up of columns and rows.
+2.	Define what a Table is? A table is a way to organize and analyze data using table and rows
+3.	What is a Record? A record is the specific data entry within the table 
+4.	What direction does data flow in a column? Up and down
+5.	What is a Schema? is the layout/structure of a table
+6.	What purpose do Keys serve in a table? A unique attribute that identifies a row.
+
+
+Questions:
+1.	Name two keywords that fall under the CREATE in C.R.U.D. Insert Into, Create table, Alter
+2.	What is the main keyword used for the READ in C.R.U.D. ? Select
+3.	What keyword updates rows in a table? Update
+4.	What keyword (or keywords) delete data in a database? Delete from
