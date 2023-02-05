@@ -1,3 +1,4 @@
+
 Relational Database Management Systems:
 1.	How is data stored in a relational database model?
 A:	Relational database model stores data in a Table.
