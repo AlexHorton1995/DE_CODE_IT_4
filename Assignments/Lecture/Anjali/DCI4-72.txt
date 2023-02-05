@@ -12,7 +12,7 @@ A:	A record is a collection of fields that contain data about a given entity.It 
 	which can be inserted,updated and deleted.
  
 4.	What direction does data flow in a column?
-A:	The data flow form up tp down in a column.
+A:	The data flow from  Up to Down  in a column.
 
 5.	What is a Schema?
 	Schema is a logical representation of database.It defines how data is organised within a relational database.
