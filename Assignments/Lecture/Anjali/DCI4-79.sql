@@ -2,15 +2,15 @@ USE WideWorldImporters
 Go
 
 Create Table [DecodeIT] (
-[Student ID ][int] NOT NUll,
-[Student FirstName][Varchar](30) NOT NULL,
-[Student LastName][varchar](30) NOT NULL,
-[Student Street Address] [varchar](60) NOT NULL,
-[Student City] [Varchar](30) NOT NULL,
-[Student State][Varchar](30) NOT NULL,
-[Student Zip][int] NOT  NULL 
+[ID][int] NOT NUll,
+[FirstName][Varchar](30) NOT NULL,
+[LastName][varchar](30) NOT NULL,
+[Street Address] [varchar](60) NOT NULL,
+[City] [Varchar](30) NOT NULL,
+[State][Varchar](30) NOT NULL,
+[Zip][int] NOT  NULL 
 Constraint [PK_DecodeIT] Primary key Clustered (
-[Student ID] ASC 
+[ID] ASC 
 
 	)
 )
