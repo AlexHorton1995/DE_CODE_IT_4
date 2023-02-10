@@ -1,0 +1,7 @@
+Relational Database Management Systems:
+1.	How is data stored in a relational database model? A relational database organizes data into rows and columns, which formm a table.
+2.	Define what a Table is? A daat structure that organizes information into rows and columns.
+3.	What is a Record? A record (row) is a grouping of fields within a table that reference one particular object. 
+4.	What direction does data flow in a column? From top to bottom
+5.	What is a Schema? A list of logical structures of data. 
+6.	What purpose do Keys serve in a table? Help create structure in relational databases.
