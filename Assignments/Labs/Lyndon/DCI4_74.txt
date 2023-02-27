@@ -1,0 +1,15 @@
+Relational Database Management Systems:
+1.	How is data stored in a relational database model?
+2.	Define what a Table is?
+3.	What is a Record?
+4.	What direction does data flow in a column?
+5.	What is a Schema?
+6.	What purpose do Keys serve in a table?
+
+Relational Database Management Answers: 
+1. Data is stored in one or more tables (or relations) of columns and rows. making it easy to see and understand how different data structures relate to each other.
+2.Table's are database objects  that contain all the data in a database. In tables, data is logically organized in a row-and - coloumn format similar to a spreadsheet. Each row represents a unique record, and each column represents a field in the record.
+3. A record: Contains specific data, like information about a particular employee or a product. 
+4. With simplix communication, all data flow is unidirectional: from the designated transmitter to the designated receiver.
+5. A database schema defines how data is organized within a relational database; this is inclusive of logical constraints such as, table names, fields, data types, and the relationships between these entities.
+6. The purpose keys serve in a table; they ensure that each record in a table is precisely identified. Keys also establish and enforce various types of data integrity. Keys also serve to establish a table relationships.
