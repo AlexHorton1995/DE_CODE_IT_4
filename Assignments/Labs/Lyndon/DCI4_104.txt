@@ -1,0 +1,18 @@
+Creating Databases 
+1.	What three advantages do databases have over text files or spreadsheets?
+2.	What are at least two benefits of utilizing a database?
+3.	What are the 4 system databases?
+4.	What is the purpose of the master database in SQL Server?
+5.	Which of the system databases act as a template for new databases?
+6.	The MSDB database
+	a.	Stores information for SQL Server Agent Database
+	b.	Stores information for backups and restores that are executed
+	c.	Stores information for Service Broker and Database Mail
+	d.	All the above
+Answers
+1. A database has broad quering functionality that can retrieve all records matching select criteria, cross-reference records in multiple tables, and perfom complex aggregrate calculations across multiple tables.
+2. The benefits of utilizing a database are, the reduced amount of time you spend managing data. The ability to analyze data in a variety of ways, and it improves data sharing, and data security. 
+3.The four database systems are Hierarchial, Network, Relational, and Object-Oriented Database systems.
+4. The master database records all the system-level information for a SQL server system. This includes instance-wide metadata such as logon accounts, endpoints, linked servers, and system configurations settings. Also the master is the database that records the existence of all other databases and the location of those databases files and records the initlazation information for SQL Server. Therefore, SQL server cannot start if the master database is not available. 
+5. The model database is used as a template for other databases created in SQL server, especially when creating user - defined databases. The model database information including tables, stored precedures, etc, that are created on it will be copied when a new database is created using the model database template.
+6. The answer is D all of the above for the MSDB
