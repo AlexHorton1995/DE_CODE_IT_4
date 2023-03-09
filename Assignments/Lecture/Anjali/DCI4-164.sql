@@ -21,7 +21,6 @@ SELECT ???() CurrentDateTime
 */
  
 
-Select Current_TimeStamp() currentdatetime
 Select getdate() currentdatetime
 
 --3
