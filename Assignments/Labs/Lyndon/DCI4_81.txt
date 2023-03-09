@@ -1,0 +1,30 @@
+C.R.U.D. Operations
+
+Questions:
+1.	Name two keywords that fall under the CREATE in C.R.U.D. 
+2.	What is the main keyword used for the READ in C.R.U.D. ?
+3.	What keyword updates rows in a table?
+4.	What keyword (or keywords) delete data in a database?
+
+*** For this section of the assignment, you must write your SQL and deliver it as expected via Git (complete with pull request) ***
+5.	Inside of the WorldWideImporters database, Create a table called DECodeIT.  
+	The table should have the following columns:
+	a. Student ID.  The Student ID should be a number and is the primary key for the table.
+	b. Student First Name.
+	c. Student Last Name.
+	d. Student Street Address.
+	e. Student City.
+	f. Student State.
+	g. Student Zip.
+
+	*** Do not forget to follow the best practices of naming tables (no spaces, PascelCase, etc) ***
+
+6.	Insert 5 new rows into the table you just created.
+
+7.	Select the rows in the table you just created and make a screenshot.  Attach the screenshot to the pull request or your Jira task, either is acceptable.
+
+Answers for questions 1 - 4
+1. Two key words that fall under create in C.R.U.D. are Create, and Insert
+2. The main key word used for read in C.R.U.D. is select.
+3. The key word that updates rows in a table is Set. 
+4. The key words that delete data from the database are Delete From & Where
