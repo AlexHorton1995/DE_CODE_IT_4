@@ -19,7 +19,11 @@ SELECT ???() CurrentDateTime
 /*
 	Question: What Function should we use to get the current date and time above?
 */
- 
+SELECT CURRENT_DATE() 
+--Select Current_Time()
+--Select Current_TimeStamp()
+Select getdate()
+
 
 Select getdate() currentdatetime
 
@@ -38,11 +42,14 @@ SELECT CustomerID, CustomerTransactionID, CASE WHEN ISNull(PaymentMethodID, '') 
 select InvoiceID, InvoiceDate IVDate, CustomerPurchaseOrderNumber CPOrderNumber, DeliveryInstructions from sales.Invoices
 ) SubQ
 ORDER BY CPOrderNumber, DeliveryInstructions
-WHERE InvoiceDate >= '20160530'*/
 
 
-	--The query above does not run and has errors.  What changes should we perform to make it run
-
+SELECT InvoiceID, InvoiceDate AS IVDate, CustomerPurchaseOrderNumber AS CPOrderNumber, DeliveryInstructions FROM (
+select InvoiceID, InvoiceDate AS IVDate, CustomerPurchaseOrderNumber AS CPOrderNumber, DeliveryInstructions from sales.Invoices
+WHERE InvoiceDate >= '20160531'
+Group by Invoice ID 
+)SubQ
+group BY CPOrderNumber, DeliveryInstructions
  
  SELECT IVDate, CPOrderNumber, DeliveryInstructions FROM (
 select InvoiceID, InvoiceDate IVDate, CustomerPurchaseOrderNumber CPOrderNumber, DeliveryInstructions from sales.Invoices
@@ -52,7 +59,6 @@ ORDER BY CPOrderNumber, DeliveryInstructions
 
 
 --5
---SELECT ??? 100 * FROM sales.CustomerTransactions
 
 /*
 	How can we return the first 100 rows from the table above?
