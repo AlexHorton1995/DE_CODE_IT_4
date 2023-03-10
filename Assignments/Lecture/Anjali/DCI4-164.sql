@@ -24,6 +24,9 @@ SELECT CURRENT_DATE()
 --Select Current_TimeStamp()
 Select getdate()
 
+
+Select getdate() currentdatetime
+
 --3
 --SELECT CustomerID, CustomerTransactionID, CASE WHEN ???(PaymentMethodID, '') = '' THEN 9999 else PaymentMethodID END PayMethod FROM SALES.CustomerTransactions
 --Select * from Sales.CustomerTransactions
@@ -39,10 +42,7 @@ SELECT CustomerID, CustomerTransactionID, CASE WHEN ISNull(PaymentMethodID, '') 
 select InvoiceID, InvoiceDate IVDate, CustomerPurchaseOrderNumber CPOrderNumber, DeliveryInstructions from sales.Invoices
 ) SubQ
 ORDER BY CPOrderNumber, DeliveryInstructions
-WHERE InvoiceDate >= '20160530'
 
-/*
-	--The query above does not run and has errors.  What changes should we perform to make it run?
 
 SELECT InvoiceID, InvoiceDate AS IVDate, CustomerPurchaseOrderNumber AS CPOrderNumber, DeliveryInstructions FROM (
 select InvoiceID, InvoiceDate AS IVDate, CustomerPurchaseOrderNumber AS CPOrderNumber, DeliveryInstructions from sales.Invoices
@@ -59,10 +59,10 @@ ORDER BY CPOrderNumber, DeliveryInstructions
 
 
 --5
-SELECT ??? 100 * FROM sales.CustomerTransactions
 
 /*
 	How can we return the first 100 rows from the table above?
 */
 
  Select Top 100 * from sales.CustomerTransactions 
+  
