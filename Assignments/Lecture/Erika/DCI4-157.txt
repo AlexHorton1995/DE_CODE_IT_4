@@ -1,0 +1,45 @@
+USE WideWorldImporters
+GO
+
+--1
+SELECT SOME(ExpectedUnitPricePerOuter) TotalUnitPricePerOrder FROM Purchasing.PurchaseOrderLines
+
+/*
+	Result:
+	TotalUnitPricePerOrder
+	748043.85
+	
+	Question: What Function should we use above?
+*/
+
+--2
+SELECT GITDATE() CurrentDateTime
+
+/*
+	Question: What Function should we use to get the current date and time above?
+*/
+
+--3
+SELECT CustomerID, CustomerTransactionID, CASE WHEN ISNULL(PaymentMethodID, '') = '' THEN 9999 else PaymentMethodID END PayMethod FROM SALES.CustomerTransactions
+
+/*
+	Question: What Function should we use here?
+*/
+
+--4
+SELECT InvoiceDate, CPOrderNumber, DeliveryInstructions FROM (
+select InvoiceID, InvoiceDate IVDate, CustomerPurchaseOrderNumber CPOrderNumber, DeliveryInstructions from sales.Invoices
+) SubQ
+WHERE IVDate >= '20160530'
+ORDER BY CPOrderNumber, DeliveryInstructions
+
+/*
+	The query above does not run and has errors.  What changes should we perform to make it run?
+*/
+
+--5
+SELECT TOP 100 * FROM sales.CustomerTransactions
+
+/*
+	How can we return the first 100 rows from the table above?
+*/
