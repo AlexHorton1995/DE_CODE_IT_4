@@ -52,7 +52,10 @@ UPDATE [dbo].[QuestionTable1]
  DELETE FROM [dbo].[QuestionTable1]
       WHERE [QuestionText] = 'How did you hear about Code Black?' 
 
-SELECT * FROM dbo.QuestionTable1
+ALTER TABLE [CBSurveyInfo]
+	ADD CONSTRAINT [FK_QuestionTable1]
+	FOREIGN KEY (SurveyQuestion1)
+REFERENCES [QuestionTable1] (QuestionId)
 
 
 		   	
