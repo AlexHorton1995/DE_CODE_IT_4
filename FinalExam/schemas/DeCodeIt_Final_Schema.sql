@@ -1,46 +1,61 @@
 /*
-	DECODEIT Schema 1.0.0.3
+	DECODEIT Schema 1.0.0.4
 */
 
 
-/*
-	DROP CONSTRAINTS
-*/
+/* DROP CONSTRAINTS */
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[FK_CUSTOMERID]') AND TYPE IN (N'F'))
+BEGIN
+	ALTER TABLE [dbo].[CBSURVEYINFO] 
+		DROP CONSTRAINT [FK_CUSTOMERID]
+END
+GO
 
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[FK_Questionaire1_CID]') AND TYPE IN (N'F'))
+BEGIN
+	ALTER TABLE [dbo].[CBSURVEYINFO] 
+		DROP CONSTRAINT [FK_Questionaire1_CID]
+END
+GO
 
-/*
-ALTER TABLE [CBSURVEYINFO] 
-	DROP CONSTRAINT [FK_CUSTOMERID]
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[FK_Questionaire2_CID]') AND TYPE IN (N'F'))
+BEGIN
+	ALTER TABLE [dbo].[CBSURVEYINFO] 
+		DROP CONSTRAINT [FK_Questionaire2_CID]
+END
+GO
 
-ALTER TABLE [CBSURVEYINFO] 
-	DROP CONSTRAINT [FK_Questionaire1_CID]
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[FK_Questionaire3_CID]') AND TYPE IN (N'F'))
+BEGIN
+	ALTER TABLE [dbo].[CBSURVEYINFO] 
+		DROP CONSTRAINT [FK_Questionaire3_CID]
+END 
+GO
 
-ALTER TABLE [CBSURVEYINFO] 
-	DROP CONSTRAINT [FK_Questionaire2_CID]
-
-ALTER TABLE [CBSURVEYINFO] 
-	DROP CONSTRAINT [FK_Questionaire3_CID]
-*/
-
+/** TABLE CREATES **/
 --Anjali
 
-Drop Table CustomerInfo
-
 --Create
-Create Table CustomerInfo(
-         CustomerId Int Identity(1,1) NOT NULL,
-		 FirstName varchar(30) NOT NULL,
-		 LastName varchar(30) NOT NULL,
-		 [Address] varchar(60) NOT NULL,
-		 City varchar(23) NOT NULL,
-		 [State] varchar(2) NOT NULL,
-		 Zipcode varchar(5) NOT NUll,
-		 Email varchar(60) NULL
-		    CONSTRAINT[PK_SALES_CustomerInfo] PRIMARY KEY CLUSTERED
-   (
-   [CUSTOMERID] ASC
-   )
-  )
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CustomerInfo]') AND TYPE IN (N'U'))
+BEGIN
+Create Table [dbo].[CustomerInfo]
+(
+    CustomerId Int Identity(1,1) NOT NULL,
+	FirstName varchar(30) NOT NULL,
+	LastName varchar(30) NOT NULL,
+	[Address] varchar(60) NOT NULL,
+	City varchar(23) NOT NULL,
+	[State] varchar(2) NOT NULL,
+	Zipcode varchar(5) NOT NUll,
+	Email varchar(60) NULL
+	CONSTRAINT[PK_SALES_CustomerInfo] PRIMARY KEY CLUSTERED
+	(
+		[CUSTOMERID] ASC
+	)
+)
+END
+GO
+
 --Insert
 INSERT INTO [dbo].[CustomerInfo]
            ([FirstName]
@@ -70,8 +85,9 @@ SELECT [CustomerId]
   FROM [dbo].[CustomerInfo]
 
 --Update 
-Update CustomerInfo
-SET  Zipcode = '68101' , LastName = 'Jackson'
+Update [dbo].[CustomerInfo]
+SET  Zipcode = '68101', 
+	LastName = 'Jackson'
 Where CustomerID = 4
 
 --Delete
@@ -79,11 +95,9 @@ Delete from CustomerInfo where City = 'Kansas'
 
 --Katie
 
-
-DROP TABLE CBSurveyInfo
-
-
-CREATE TABLE CBSurveyInfo (
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CBSurveyInfo]') AND TYPE IN (N'U'))
+BEGIN
+CREATE TABLE [dbo].[CBSurveyInfo] (
 	[SurveyId] [INT] IDENTITY(1,1),
 	[CustomerID] [INT] NOT NULL,
 	[SURVEYDATE] [DATETIME] NOT NULL,
@@ -98,6 +112,9 @@ CREATE TABLE CBSurveyInfo (
 	[SURVEYID] ASC
 	)
 )
+END
+GO
+
 --TEST INSERT--
 
 INSERT INTO [dbo].[CBSurveyInfo]
@@ -142,9 +159,9 @@ INSERT INTO [dbo].[CBSurveyInfo]
 
 --Erika
 
-DROP TABLE Questionaire2
-
- CREATE TABLE Questionaire2(
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Questionaire2]') AND TYPE IN (N'U'))
+BEGIN
+CREATE TABLE [dbo].[Questionaire2](
 	[QuestionID] [INT] IDENTITY(1,1) NOT NULL,
 	[QuestionText] varchar(50) NOT NULL,
 	[IsActive] bit NOT NULL,
@@ -152,12 +169,14 @@ DROP TABLE Questionaire2
 	[AddedBy] int NOT NULL,
 	[QuestionDeleteDate] date NULL,
 	[DeletedBy] int NULL
-	CONSTRAINT [PK_Question2] PRIMARY 
-	KEY CLUSTERED
-		(
-			QuestionID ASC
-		)
+	CONSTRAINT [PK_Question2] PRIMARY KEY CLUSTERED
+	(
+		QuestionID ASC
 	)
+)
+END
+GO
+
 INSERT INTO [dbo].[Questionaire2]
 	([QuestionText]
 	,[IsActive]
@@ -177,7 +196,6 @@ INSERT INTO [dbo].[Questionaire2]
 		('How do you handle rejection?',1,'20230322',50),
 		('Are you interested in an internship?',0,'20230322',50)
 
-
 UPDATE [dbo].[Questionaire2]
 	SET [QuestionText] = 'Are you interested in an internship?'
 	WHERE IsActive = 0
@@ -187,20 +205,25 @@ UPDATE [dbo].[Questionaire2]
 	WHERE [QuestionText] = 'Are you interested in an internship?'
 
  --Lyndon
- DROP TABLE Questionaire3
-CREATE TABLE Questionaire3(
-	[QuestionID] [INT] IDENTITY(1,1) NOT NULL,
-	[QuestionText] varchar (50)NOT NULL,
-	[IsActive] bit NOT NULL,
-	[QuestionAddedDate] date NOT NULL,
-	[AddedBy] int NOT NULL ,
-	[QuestionDeleteDate] date NULL,
-	[DeletedBy] int Null
-	CONSTRAINT [PK_QuestionID3] PRIMARY KEY CLUSTERED
-	(
-		QuestionID ASC
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Questionaire3]') AND TYPE IN (N'U'))
+BEGIN
+	CREATE TABLE [dbo].[Questionaire3](
+		[QuestionID] [INT] IDENTITY(1,1) NOT NULL,
+		[QuestionText] varchar (50)NOT NULL,
+		[IsActive] bit NOT NULL,
+		[QuestionAddedDate] date NOT NULL,
+		[AddedBy] int NOT NULL ,
+		[QuestionDeleteDate] date NULL,
+		[DeletedBy] int Null
+		CONSTRAINT [PK_QuestionID3] PRIMARY KEY CLUSTERED
+		(
+			QuestionID ASC
+		)
 	)
-)
+END
+GO
+
 INSERT INTO [dbo].[Questionaire3]
            ([QuestionText]
            ,[IsActive]
@@ -239,22 +262,25 @@ SELECT * FROM dbo.Questionaire3
 	20230322 SQL Cohort 4
  */
  
- 
-DROP TABLE Questionaire1
 
-CREATE TABLE Questionaire1(
-	[QuestionID] [INT] IDENTITY(1,1) NOT NULL,
-	[QuestionText] varchar (50)NOT NULL,
-	[IsActive] bit NOT NULL,
-	[QuestionAddedDate] date NOT NULL,
-	[AddedBy] int NOT NULL ,
-	[QuestionDeleteDate] date NULL,
-	[DeletedBy] int 
-	CONSTRAINT [PK_Question1] PRIMARY KEY CLUSTERED
-	(
-		QuestionID ASC
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Questionaire1]') AND TYPE IN (N'U'))
+BEGIN 
+	CREATE TABLE [dbo].[Questionaire1](
+		[QuestionID] [INT] IDENTITY(1,1) NOT NULL,
+		[QuestionText] varchar (50)NOT NULL,
+		[IsActive] bit NOT NULL,
+		[QuestionAddedDate] date NOT NULL,
+		[AddedBy] int NOT NULL ,
+		[QuestionDeleteDate] date NULL,
+		[DeletedBy] int 
+		CONSTRAINT [PK_Question1] PRIMARY KEY CLUSTERED
+		(
+			QuestionID ASC
+		)
 	)
-) 
+END
+GO
+
 INSERT INTO [dbo].[Questionaire1]
            ([QuestionText]
            ,[IsActive]
