@@ -1,5 +1,25 @@
 /*
-	DECODEIT Schema 1.0.0.2
+	DECODEIT Schema 1.0.0.3
+*/
+
+
+/*
+	DROP CONSTRAINTS
+*/
+
+
+/*
+ALTER TABLE [CBSURVEYINFO] 
+	DROP CONSTRAINT [FK_CUSTOMERID]
+
+ALTER TABLE [CBSURVEYINFO] 
+	DROP CONSTRAINT [FK_Questionaire1_CID]
+
+ALTER TABLE [CBSURVEYINFO] 
+	DROP CONSTRAINT [FK_Questionaire2_CID]
+
+ALTER TABLE [CBSURVEYINFO] 
+	DROP CONSTRAINT [FK_Questionaire3_CID]
 */
 
 --Anjali
@@ -67,11 +87,11 @@ CREATE TABLE CBSurveyInfo (
 	[SurveyId] [INT] IDENTITY(1,1),
 	[CustomerID] [INT] NOT NULL,
 	[SURVEYDATE] [DATETIME] NOT NULL,
-	[SURVEYQUESTION1] [VARCHAR] (50) NOT NULL,
+	[SURVEYQUESTION1] [int] NOT NULL,
 	[ANSWER1] [VARCHAR] (50) NULL,
-	[SURVEYQUESTION2] [VARCHAR] (50) NOT NULL,
+	[SURVEYQUESTION2] [int] NOT NULL,
 	[ANSWER2] [VARCHAR] (50) NULL,
-	[SURVEYQUESTION3] [VARCHAR] (50) NOT NULL,
+	[SURVEYQUESTION3] int NOT NULL,
 	[ANSWER3] [VARCHAR] (50) NULL,
 	[ISINTERESTED][BIT] NOT NULL ,
 	CONSTRAINT [PK_SURVEYID] PRIMARY KEY CLUSTERED (
@@ -92,11 +112,11 @@ INSERT INTO [dbo].[CBSurveyInfo]
            ,[ISINTERESTED])
      VALUES
 
-		(1,'20230102','WOULD YOU LIKE TO BE A MENTOR','YES','DO YOU HAVE TRANSPORTATION','YES','WHAT IS YOUR ETHNICITY','ASIAN','TRUE'),
-		(1,'20230102','WOULD YOU LIKE TO BE A MENTOR','YES','DO YOU HAVE TRANSPORTATION','YES','WHAT IS YOUR ETHNICITY','PACIFICISLANDER','TRUE'),
-		(1,'20230102','WOULD YOU LIKE TO BE A MENTOR','YES','DO YOU HAVE TRANSPORTATION','YES','WHAT IS YOUR ETHNICITY','BLACK','TRUE'),
-		(1,'20230102','WOULD YOU LIKE TO BE A MENTOR','YES','DO YOU HAVE TRANSPORTATION','YES','WHAT IS YOUR ETHNICITY','HISPANIC','TRUE'),
-		(1,'20230102','WOULD YOU LIKE TO BE A MENTOR','YES','DO YOU HAVE TRANSPORTATION','YES','WHAT IS YOUR ETHNICITY','ASIAN','TRUE')
+		(1,'20230102',1,'YES',2,'YES',3,'ASIAN','TRUE'),
+		(1,'20230102',1,'YES',2,'YES',3,'PACIFICISLANDER','TRUE'),
+		(1,'20230102',1,'YES',2,'YES',3,'BLACK','TRUE'),
+		(1,'20230102',1,'YES',2,'YES',3,'HISPANIC','TRUE'),
+		(1,'20230102',1,'YES',2,'YES',3,'ASIAN','TRUE')
 
 	
 
@@ -119,16 +139,12 @@ INSERT INTO [dbo].[CBSurveyInfo]
       ,[ISINTERESTED]
   FROM [dbo].[CBSurveyInfo]
 
- ALTER TABLE [CBSURVEYINFO]
-ADD CONSTRAINT [FK_CUSTOMERID]
-FOREIGN KEY (CUSTOMERID) 
-REFERENCES [CUSTOMERINFO] ([CUSTOMERID])
 
 --Erika
 
-DROP TABLE Questionnaire2
+DROP TABLE Questionaire2
 
- CREATE TABLE Questionnaire2(
+ CREATE TABLE Questionaire2(
 	[QuestionID] [INT] IDENTITY(1,1) NOT NULL,
 	[QuestionText] varchar(50) NOT NULL,
 	[IsActive] bit NOT NULL,
@@ -136,13 +152,13 @@ DROP TABLE Questionnaire2
 	[AddedBy] int NOT NULL,
 	[QuestionDeleteDate] date NULL,
 	[DeletedBy] int NULL
-	CONSTRAINT [PK_QuestionID] PRIMARY 
+	CONSTRAINT [PK_Question2] PRIMARY 
 	KEY CLUSTERED
 		(
 			QuestionID ASC
 		)
 	)
-INSERT INTO [dbo].[Questionnaire2]
+INSERT INTO [dbo].[Questionaire2]
 	([QuestionText]
 	,[IsActive]
 	,[QuestionAddedDate]
@@ -162,22 +178,17 @@ INSERT INTO [dbo].[Questionnaire2]
 		('Are you interested in an internship?',0,'20230322',50)
 
 
-UPDATE [dbo].[Questionnaire2]
+UPDATE [dbo].[Questionaire2]
 	SET [QuestionText] = 'Are you interested in an internship?'
 	WHERE IsActive = 0
 	
 	
-	DELETE FROM [dbo].[Questionnaire2]
+	DELETE FROM [dbo].[Questionaire2]
 	WHERE [QuestionText] = 'Are you interested in an internship?'
- 
- ALTER TABLE [CBSurveyInfo]
-	ADD CONSTRAINT [FK_Questionnaire2_CID]
-	FOREIGN KEY (SurveyQuestion2) 
-  REFERENCES [Questionnaire2] ([QuestionID])
 
  --Lyndon
- DROP TABLE QuestionTable3
-CREATE TABLE QuestionTable3(
+ DROP TABLE Questionaire3
+CREATE TABLE Questionaire3(
 	[QuestionID] [INT] IDENTITY(1,1) NOT NULL,
 	[QuestionText] varchar (50)NOT NULL,
 	[IsActive] bit NOT NULL,
@@ -185,12 +196,12 @@ CREATE TABLE QuestionTable3(
 	[AddedBy] int NOT NULL ,
 	[QuestionDeleteDate] date NULL,
 	[DeletedBy] int Null
-	CONSTRAINT [PK_QuestionID] PRIMARY KEY CLUSTERED
+	CONSTRAINT [PK_QuestionID3] PRIMARY KEY CLUSTERED
 	(
 		QuestionID ASC
 	)
 )
-INSERT INTO [dbo].[QuestionTable3]
+INSERT INTO [dbo].[Questionaire3]
            ([QuestionText]
            ,[IsActive]
            ,[QuestionAddedDate]
@@ -212,19 +223,15 @@ INSERT INTO [dbo].[QuestionTable3]
 		   ('How did you hear about Code Black?',0,'20230320',23),
 		   ('How did you hear about Code Black?',0,'20230320',23),
 		   ('How did you hear about Code Black?',0,'20230320',23)
-		   UPDATE [dbo].[QuestionTable3]
-   SET [QuestionText] = 'How did you hear about Code Black?'
-  WHERE IsActive = 0
 
-  DELETE FROM [dbo].[QuestionTable3]
+UPDATE [dbo].[Questionaire3]
+   SET [QuestionText] = 'How did you hear about Code Black?'
+WHERE IsActive = 0
+
+  DELETE FROM [dbo].[Questionaire3]
 
       WHERE [QuestionText] = 'How did you hear about Code Black?'
-SELECT * FROM dbo.QuestionTable3
-
-ALTER TABLE [CBSurveyInfo]
- ADD CONSTRAINT [FK_Questionaire3_CID]
- FOREIGN KEY(SurveyQuestion3)
- REFERENCES [Questionaire3] ([QuestionID])
+SELECT * FROM dbo.Questionaire3
  
 --Tim
  /*
@@ -233,9 +240,9 @@ ALTER TABLE [CBSurveyInfo]
  */
  
  
-DROP TABLE QuestionTable1
+DROP TABLE Questionaire1
 
-CREATE TABLE QuestionTable1(
+CREATE TABLE Questionaire1(
 	[QuestionID] [INT] IDENTITY(1,1) NOT NULL,
 	[QuestionText] varchar (50)NOT NULL,
 	[IsActive] bit NOT NULL,
@@ -243,12 +250,12 @@ CREATE TABLE QuestionTable1(
 	[AddedBy] int NOT NULL ,
 	[QuestionDeleteDate] date NULL,
 	[DeletedBy] int 
-	CONSTRAINT [PK_QuestionID] PRIMARY KEY CLUSTERED
+	CONSTRAINT [PK_Question1] PRIMARY KEY CLUSTERED
 	(
 		QuestionID ASC
 	)
 ) 
-INSERT INTO [dbo].[QuestionTable1]
+INSERT INTO [dbo].[Questionaire1]
            ([QuestionText]
            ,[IsActive]
            ,[QuestionAddedDate]
@@ -271,17 +278,31 @@ INSERT INTO [dbo].[QuestionTable1]
 		   ('How did you hear about Code Black?',0,'20230320',24),
 		   ('How did you hear about Code Black?',0,'20230320',24)
 
-UPDATE [dbo].[QuestionTable1]
+UPDATE [dbo].[Questionaire1]
 	SET [QuestionText] = 'How did you hear about Code Black?'
 	 WHERE IsActive = 0
  
- DELETE FROM [dbo].[QuestionTable1]
+ DELETE FROM [dbo].[Questionaire1]
       WHERE [QuestionText] = 'How did you hear about Code Black?' 
 
+/* CONSTRAINTS */
+
+ALTER TABLE [CBSURVEYINFO]
+	ADD CONSTRAINT [FK_CUSTOMERID]
+	FOREIGN KEY (CUSTOMERID) 
+REFERENCES [CUSTOMERINFO] ([CUSTOMERID])
+
 ALTER TABLE [CBSurveyInfo]
-	ADD CONSTRAINT [FK_QuestionTable1]
+	ADD CONSTRAINT [FK_Questionaire1_CID]
 	FOREIGN KEY (SurveyQuestion1)
-REFERENCES [QuestionTable1] (QuestionId)
+REFERENCES [Questionaire1] (QuestionId)
 
+ALTER TABLE [CBSurveyInfo]
+	ADD CONSTRAINT [FK_Questionaire2_CID]
+	FOREIGN KEY (SurveyQuestion2) 
+REFERENCES [Questionaire2] ([QuestionID])
 
-		   	
+ALTER TABLE [CBSurveyInfo]
+	ADD CONSTRAINT [FK_Questionaire3_CID]
+	FOREIGN KEY(SurveyQuestion3)
+REFERENCES [Questionaire3] ([QuestionID])
