@@ -45,4 +45,9 @@ UPDATE [dbo].[Questionnaire2]
 	DELETE FROM [dbo].[Questionnaire2]
 	WHERE [QuestionText] = 'Are you interested in an internship?'
  
- SELECT * FROM dbo.Questionnaire2
+ ALTER TABLE [CBSurveyInfo]
+	ADD CONSTRAINT [FK_Questionnaire2_CID]
+	FOREIGN KEY (SurveyQuestion2) 
+  REFERENCES [Questionnaire2] ([QuestionID])
+
+ 
