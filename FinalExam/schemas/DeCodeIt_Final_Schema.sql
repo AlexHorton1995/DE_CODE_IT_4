@@ -46,3 +46,7 @@ INSERT INTO [dbo].[QuestionTable3]
       WHERE [QuestionText] = 'How did you hear about Code Black?'
 SELECT * FROM dbo.QuestionTable3
 
+ALTER TABLE [CBSurveyInfo]
+ ADD CONSTRAINT [FK_Questionaire3_CID]
+ FOREIGN KEY(SurveyQuestion3)
+ REFERENCES [Questionaire3] ([QuestionID])
