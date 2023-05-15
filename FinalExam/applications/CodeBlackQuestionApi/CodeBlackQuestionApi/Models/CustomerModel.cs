@@ -14,6 +14,8 @@
         public string? State { get; set; }
         public string? Zipcode { get; set; }
         public string? Email { get; set; }
+        public string? Phone { get; set; }  
+
 
     }
 }
